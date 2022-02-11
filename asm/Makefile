@@ -2,7 +2,7 @@ all: min
 
 min: test
 	dd if=test of=a.out bs=1 count=120
-	dd if=test of=a.out bs=1 seek=120 skip=4096 count=347
+	dd if=test of=a.out bs=1 seek=120 skip=4096 count=346
 
 test: test.o
 	ld -T test.ld -o test test.o
