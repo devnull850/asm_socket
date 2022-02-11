@@ -87,6 +87,5 @@ _start:
 .L2:
 	xorl	%edi,%edi
 	addq	$0x30,%rsp
-	popq	%rsp
 	movl	$0x3c,%eax
 	syscall
