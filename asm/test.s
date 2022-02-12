@@ -32,18 +32,18 @@ _start:
 	syscall
 	movl	$0x7d,0xfffffffffffffff0(%rsp)
 	movl	$0x401a00,0xfffffffffffffff8(%rsp)
-.L3:
+.L2:
 	xorl	%eax,%eax
 	movl	0x10(%rsp),%edi
 	movl	0xfffffffffffffff8(%rsp),%esi
 	movl	0xfffffffffffffff0(%rsp),%edx
 	syscall
 	test	%eax,%eax
-	jle 	.L2
+	jle 	.L1
 	addl	%eax,0xfffffffffffffff8(%rsp)
 	subl	%eax,0xfffffffffffffff0(%rsp)
-	jg	.L3
-.L2:
+	jg	.L2
+.L1:
 	movl	$0x3,%eax
 	movl	0x10(%rsp),%edi
 	syscall
