@@ -25,9 +25,8 @@ _start:
 	movl	%eax,0x18(%rsp)
 	xorq	%rax,%rax
 	pushq	%rax
+	movq	$0x901f0002,%rax
 	pushq	%rax
-	movw	$0x2,(%rsp)
-	movw	$0x901f,0x2(%rsp)
 	movl	$0x2a,%eax
 	movl	0x28(%rsp),%edi
 	leaq	(%rsp),%rsi
