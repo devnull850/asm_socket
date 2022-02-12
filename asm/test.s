@@ -25,7 +25,8 @@ _start:
 	leaq	(%rsp),%rsi
 	movl	$0x10,%edx
 	syscall
-	movl	$1,%eax
+	xorl	%eax,%eax
+	inc	%eax
 	movl	0x10(%rsp),%edi
 	movl	$0x401078,%esi
 	movl	$0x28,%edx
