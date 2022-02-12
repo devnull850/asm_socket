@@ -12,7 +12,8 @@ _start:
 	jl	.L0
 	movl	$0x29,%eax
 	movl	$0x2,%edi
-	movl	$0x1,%esi
+	xorl	%esi,%esi
+	inc	%esi
 	xorl	%edx,%edx
 	syscall
 	pushq	%rax
