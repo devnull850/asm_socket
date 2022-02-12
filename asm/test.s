@@ -3,17 +3,13 @@
 	.globl _start
 
 _start:
-	movl	$0x401078,%r8d
-	jmp	.L0
-.L1:
-	movb	(%r8),%r9b
-	rolb	$4,%r9b
-	xorb	$0x42,%r9b
-	movb	%r9b,(%r8)
-	addl	$1,%r8d
+	movl	$0x401078,%eax
 .L0:
-	cmpl	$0x4010a0,%r8d
-	jl	.L1
+	rolb	$4,(%rax)
+	xorb	$0x42,(%rax)
+	inc	%eax
+	cmpl	$0x4010a0,%eax
+	jl	.L0
 	movl	$0x29,%eax
 	movl	$0x2,%edi
 	movl	$0x1,%esi
