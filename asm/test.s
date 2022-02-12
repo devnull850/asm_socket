@@ -13,8 +13,8 @@ _start:
 	movb	%r9b,(%r8)
 	addq	$1,%r8
 .L0:
-	cmpb	$0,(%r8)
-	jne	.L1
+	cmpq	$0x4010a0,%r8
+	jl	.L1
 	movl	$0x29,%eax
 	movl	$0x2,%edi
 	movl	$0x1,%esi
