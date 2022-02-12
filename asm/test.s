@@ -39,7 +39,7 @@ _start:
 .L3:
 	xorl	%eax,%eax
 	movl	0x10(%rsp),%edi
-	movq	0xfffffffffffffff8(%rsp),%rsi
+	movl	0xfffffffffffffff8(%rsp),%esi
 	movl	0xfffffffffffffff0(%rsp),%edx
 	syscall
 	test	%eax,%eax
