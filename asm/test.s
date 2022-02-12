@@ -49,11 +49,10 @@ _start:
 	movq	0x10(%rsp),%rsi
 	movl	0x18(%rsp),%edx
 	syscall
-	addl	%eax,0x10(%rsp)
-	subl	%eax,0x18(%rsp)
 	test	%eax,%eax
 	jle 	.L3
-	cmpl	$0,0x18(%rsp)
+	addl	%eax,0x10(%rsp)
+	subl	%eax,0x18(%rsp)
 	jg	.L4
 .L3:
 	movl	$0x3,%eax
