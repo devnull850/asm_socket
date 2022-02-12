@@ -46,5 +46,4 @@ _start:
 	subl	%eax,0xfffffffffffffff0(%rsp)
 	jg	.L2
 .L1:
-	movl	$0x401a4c,%eax
-	call	*%rax
+	jmp	0x4019ac
