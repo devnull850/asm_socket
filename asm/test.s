@@ -15,10 +15,7 @@ _start:
 	movq	$0x401078,%r8
 	addq	%rcx,%r8
 	movb	(%r8),%r9b
-	movb	%r9b,%r10b
-	shlb	$4,%r10b
-	shrb	$4,%r9b
-	orb	%r10b,%r9b
+	rolb	$4,%r9b
 	xorb	$0x42,%r9b
 	movb	%r9b,(%r8)
 	addl	$1,%ecx
